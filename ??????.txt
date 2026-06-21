@@ -1,0 +1,69 @@
+﻿============================================
+  安全管理作业票系统 - 打包操作指南
+============================================
+
+你的 Android Studio 已经打开并载入了项目！
+现在只需要简单几步就能打包 APK：
+
+===== 第 1 步：打开 SDK Manager =====
+
+在 Android Studio 窗口顶部的菜单栏：
+
+  Tools → SDK Manager
+
+（或者点工具栏上的 📦 SDK Manager 图标）
+
+===== 第 2 步：安装 Android SDK =====
+
+在弹出的 SDK Manager 窗口中：
+
+  1. 确认 Android SDK Location 是：
+     C:\Users\suman\AppData\Local\Android\Sdk
+
+  2. 在 SDK Platforms 选项卡：
+     ☑ 勾选 "Android 14.0 (API Level 34)"
+     点击 Apply
+
+  3. 在 SDK Tools 选项卡：
+     ☑ 勾选 "Android SDK Build-Tools 34"
+     ☑ 勾选 "Android SDK Platform-Tools"
+     点击 Apply → OK → Finish
+
+===== 第 3 步：等待下载完成 =====
+
+底部状态栏会显示下载进度。
+第一次下载约 5-10 分钟（看网速）。
+
+===== 第 4 步：编译 APK =====
+
+下载完成后，点击菜单：
+
+  Build → Build Bundle(s) / APK(s) → Build APK(s)
+
+右下角会弹出通知，点 "locate" 就能找到 APK 文件！
+
+===== 如果下载不了（被墙）=====
+
+在中国可能无法直接下载。请在 SDK Manager 里：
+
+  1. 点击 "SDK Update Sites" 选项卡
+  2. 添加腾讯云镜像：
+     Name: Tencent Mirror
+     URL: https://mirrors.cloud.tencent.com/android/repository/
+  3. 勾选并点击 OK
+  4. 重新尝试第 2 步
+
+===== 常见问题 =====
+
+Q: 菜单栏找不到 SDK Manager？
+A: 点 File → Settings → Appearance & Behavior → 
+   System Settings → Android SDK
+
+Q: Gradle 同步失败？
+A: 点 File → Sync Project with Gradle Files
+   或者点右上角的 🐘 大象图标
+
+Q: 还是不会操作？
+A: 把屏幕截图发给我，我告诉你怎么点！
+
+祝打包顺利！ 🎉

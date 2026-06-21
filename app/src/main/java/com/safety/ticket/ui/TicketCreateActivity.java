@@ -1,4 +1,4 @@
-package com.safety.ticket.ui;
+﻿package com.safety.ticket.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.safety.ticket.R;
 import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.Signature;
 import com.safety.ticket.data.Ticket;
 import com.safety.ticket.data.TicketDao;
 import com.safety.ticket.data.TicketTemplate;
@@ -49,7 +50,7 @@ public class TicketCreateActivity extends AppCompatActivity {
 
         ticketId = getIntent().getLongExtra("ticket_id", -1);
         if (ticketId == -1) {
-            Toast.makeText(this, "鍙傛暟閿欒", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "参数错误", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -57,7 +58,7 @@ public class TicketCreateActivity extends AppCompatActivity {
         ticketDao = new TicketDao(this);
         ticket = ticketDao.getTicketById(ticketId);
         if (ticket == null) {
-            Toast.makeText(this, "浣滀笟绁ㄤ笉瀛樺湪", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "作业票不存在", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -89,19 +90,19 @@ public class TicketCreateActivity extends AppCompatActivity {
 
         tvTicketType.setText(ticket.getTypeText());
 
-        // 璁剧疆浣滀笟绾у埆涓嬫媺
+        // 设置作业级别下拉
         if (Ticket.TYPE_HEIGHT.equals(ticket.getTicketType())) {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_spinner_item, TicketTemplate.getHeightLevels());
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spLevel.setAdapter(adapter);
-            spLevel.setPrompt("閫夋嫨楂樺浣滀笟绾у埆");
+            spLevel.setPrompt("选择高处作业级别");
         } else if (Ticket.TYPE_FIRE.equals(ticket.getTicketType())) {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_spinner_item, TicketTemplate.getFireLevels());
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spLevel.setAdapter(adapter);
-            spLevel.setPrompt("閫夋嫨鍔ㄧ伀浣滀笟绾у埆");
+            spLevel.setPrompt("选择动火作业级别");
 
             layoutFireMethod.setVisibility(View.VISIBLE);
             ArrayAdapter<String> methodAdapter = new ArrayAdapter<>(this,
@@ -171,51 +172,51 @@ public class TicketCreateActivity extends AppCompatActivity {
 
         ticketDao.updateTicket(ticket);
 
-        // 鏇存柊瀹夊叏鎺柦
+        // 更新安全措施
         for (SafetyMeasure m : measures) {
             ticketDao.updateMeasure(m);
         }
 
         if (submit) {
-            Toast.makeText(this, "鎻愪氦鎴愬姛", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
             finish();
         } else {
-            Toast.makeText(this, "淇濆瓨鎴愬姛", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void submitTicket() {
         if (etApplyUnit.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "璇峰～鍐欑敵璇峰崟浣?, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请填写申请单位", Toast.LENGTH_SHORT).show();
             return;
         }
         if (etLocation.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "璇峰～鍐欎綔涓氬湴鐐?, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请填写作业地点", Toast.LENGTH_SHORT).show();
             return;
         }
         if (etContent.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "璇峰～鍐欎綔涓氬唴瀹?, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请填写作业内容", Toast.LENGTH_SHORT).show();
             return;
         }
 
         new AlertDialog.Builder(this)
-                .setTitle("纭鎻愪氦")
-                .setMessage("鎻愪氦鍚庡皢杩涘叆瀹℃壒娴佺▼锛屾槸鍚︾‘璁わ紵")
-                .setPositiveButton("纭", new DialogInterface.OnClickListener() {
+                .setTitle("确认提交")
+                .setMessage("提交后将进入审批流程，是否确认？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         saveTicket(true);
                     }
                 })
-                .setNegativeButton("鍙栨秷", null)
+                .setNegativeButton("取消", null)
                 .show();
     }
 
     private void showSignDialog() {
-        final String[] items = {"鐢宠浜虹瀛?, "鐩戞姢浜虹瀛?, "浣滀笟浜虹瀛?};
+        final String[] items = {"申请人签字", "监护人签字", "作业人签字"};
         final String[] types = {Signature.TYPE_CREATOR, Signature.TYPE_SUPERVISOR, Signature.TYPE_WORKER};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("閫夋嫨绛惧瓧绫诲瀷");
+        builder.setTitle("选择签字类型");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -229,5 +230,3 @@ public class TicketCreateActivity extends AppCompatActivity {
         builder.show();
     }
 }
-
-
