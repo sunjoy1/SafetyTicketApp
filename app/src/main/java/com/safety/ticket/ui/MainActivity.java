@@ -1,4 +1,4 @@
-package com.safety.ticket.ui;
+﻿package com.safety.ticket.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.safety.ticket.R;
 import com.safety.ticket.data.Ticket;
 import com.safety.ticket.data.TicketDao;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.TicketTemplate;
 import com.safety.ticket.utils.DateTimeUtil;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("安全管理作业票系统");
+        setTitle("瀹夊叏绠＄悊浣滀笟绁ㄧ郴缁?);
 
         ticketDao = new TicketDao(this);
         listView = findViewById(R.id.listView);
@@ -80,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showCreateDialog() {
-        final String[] items = {"高处作业票", "有限空间作业票", "动火作业票"};
+        final String[] items = {"楂樺浣滀笟绁?, "鏈夐檺绌洪棿浣滀笟绁?, "鍔ㄧ伀浣滀笟绁?};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("选择作业票类型");
+        builder.setTitle("閫夋嫨浣滀笟绁ㄧ被鍨?);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -127,16 +128,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDeleteDialog(final Ticket ticket) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("确认删除");
-        builder.setMessage("删除后将无法恢复，是否确认删除？");
-        builder.setPositiveButton("删除", new DialogInterface.OnClickListener() {
+        builder.setTitle("纭鍒犻櫎");
+        builder.setMessage("鍒犻櫎鍚庡皢鏃犳硶鎭㈠锛屾槸鍚︾‘璁ゅ垹闄わ紵");
+        builder.setPositiveButton("鍒犻櫎", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ticketDao.deleteTicket(ticket.getId());
                 loadTickets();
             }
         });
-        builder.setNegativeButton("取消", null);
+        builder.setNegativeButton("鍙栨秷", null);
         builder.show();
     }
 
@@ -172,3 +173,5 @@ public class MainActivity extends AppCompatActivity {
         tvEmpty.setVisibility(ticketList.isEmpty() ? View.VISIBLE : View.GONE);
     }
 }
+
+

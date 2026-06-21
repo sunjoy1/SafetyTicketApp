@@ -1,4 +1,6 @@
-package com.safety.ticket.ui;
+﻿package com.safety.ticket.ui;
+
+import com.safety.ticket.data.Ticket;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -123,3 +125,4 @@ public class SignatureView extends View {
         invalidate();
     }
 }
+

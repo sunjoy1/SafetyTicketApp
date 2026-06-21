@@ -1,4 +1,4 @@
-package com.safety.ticket.ui;
+﻿package com.safety.ticket.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.safety.ticket.R;
 import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.Ticket;
+import com.safety.ticket.data.Ticket;
 
 import java.util.List;
 
@@ -92,3 +94,4 @@ public class MeasureAdapter extends BaseAdapter {
         EditText etConfirm;
     }
 }
+

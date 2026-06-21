@@ -1,4 +1,4 @@
-package com.safety.ticket.ui;
+﻿package com.safety.ticket.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,9 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.safety.ticket.R;
 import com.safety.ticket.data.Photo;
+import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.Signature;
+import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.Ticket;
+import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.TicketDao;
+import com.safety.ticket.data.SafetyMeasure;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.utils.DateTimeUtil;
 
 import java.util.List;
@@ -113,7 +121,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     private void loadData() {
         ticket = ticketDao.getTicketById(ticketId);
         if (ticket == null) {
-            Toast.makeText(this, "作业票不存在", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "浣滀笟绁ㄤ笉瀛樺湪", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -126,15 +134,14 @@ public class TicketDetailActivity extends AppCompatActivity {
         tvLocation.setText(ticket.getLocation());
         tvContent.setText(ticket.getContent());
         tvRisk.setText(ticket.getRiskAnalysis());
-        tvTime.setText("作业时间：" + ticket.getWorkTimeStart() + " 至 " + ticket.getWorkTimeEnd());
+        tvTime.setText("浣滀笟鏃堕棿锛? + ticket.getWorkTimeStart() + " 鑷?" + ticket.getWorkTimeEnd());
 
-        // 更新按钮状态
-        updateButtonStatus();
-        // 显示签字
+        // 鏇存柊鎸夐挳鐘舵€?        updateButtonStatus();
+        // 鏄剧ず绛惧瓧
         showSignatures();
-        // 显示照片
+        // 鏄剧ず鐓х墖
         showPhotos();
-        // 显示安全措施
+        // 鏄剧ず瀹夊叏鎺柦
         showMeasures();
     }
 
@@ -200,10 +207,10 @@ public class TicketDetailActivity extends AppCompatActivity {
     }
 
     private void showApproveDialog() {
-        String[] items = {"作业负责人审批", "所在单位（车间）审批", "安全管理部门审批", "厂领导/总工程师审批"};
+        String[] items = {"浣滀笟璐熻矗浜哄鎵?, "鎵€鍦ㄥ崟浣嶏紙杞﹂棿锛夊鎵?, "瀹夊叏绠＄悊閮ㄩ棬瀹℃壒", "鍘傞瀵?鎬诲伐绋嬪笀瀹℃壒"};
         String[] types = {Signature.TYPE_APPROVER1, Signature.TYPE_APPROVER2, Signature.TYPE_APPROVER3, Signature.TYPE_APPROVER4};
 
-        // 根据当前状态判断可审批环节
+        // 鏍规嵁褰撳墠鐘舵€佸垽鏂彲瀹℃壒鐜妭
         int currentLevel = 0;
         for (String t : types) {
             if (ticketDao.getSignatureByType(ticketId, t) != null) {
@@ -212,15 +219,15 @@ public class TicketDetailActivity extends AppCompatActivity {
         }
 
         if (currentLevel >= items.length) {
-            Toast.makeText(this, "所有审批已完成", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "鎵€鏈夊鎵瑰凡瀹屾垚", Toast.LENGTH_SHORT).show();
             return;
         }
 
         final int level = currentLevel;
         new AlertDialog.Builder(this)
-                .setTitle("审批确认")
-                .setMessage("当前进行：" + items[level])
-                .setPositiveButton("去签字审批", new DialogInterface.OnClickListener() {
+                .setTitle("瀹℃壒纭")
+                .setMessage("褰撳墠杩涜锛? + items[level])
+                .setPositiveButton("鍘荤瀛楀鎵?, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(TicketDetailActivity.this, SignatureActivity.class);
@@ -231,27 +238,28 @@ public class TicketDetailActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 })
-                .setNegativeButton("取消", null)
+                .setNegativeButton("鍙栨秷", null)
                 .show();
     }
 
     private void showCompleteDialog() {
         new AlertDialog.Builder(this)
-                .setTitle("完工验收")
-                .setMessage("确认作业已完工并验收？")
-                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                .setTitle("瀹屽伐楠屾敹")
+                .setMessage("纭浣滀笟宸插畬宸ュ苟楠屾敹锛?)
+                .setPositiveButton("纭", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(TicketDetailActivity.this, SignatureActivity.class);
                         intent.putExtra("ticket_id", ticketId);
                         intent.putExtra("sign_type", Signature.TYPE_FINAL);
-                        intent.putExtra("sign_title", "完工验收");
+                        intent.putExtra("sign_title", "瀹屽伐楠屾敹");
                         intent.putExtra("is_approve", true);
                         intent.putExtra("is_complete", true);
                         startActivity(intent);
                     }
                 })
-                .setNegativeButton("取消", null)
+                .setNegativeButton("鍙栨秷", null)
                 .show();
     }
 }
+
