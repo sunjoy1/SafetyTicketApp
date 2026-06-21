@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTicketType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="基本信息"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/etTicketNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="作业票编号"
+            android:enabled="false"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etApplyUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="申请单位 *"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="作业地点 *"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="作业内容 *"
+            android:minLines="2"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etRiskAnalysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="风险辨识结果"
+            android:minLines="2"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutFireMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="动火方式"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Spinner
+                android:id="@+id/spFireMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etWorkTimeStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="作业开始时间 (yyyy-MM-dd HH:mm)"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etWorkTimeEnd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="作业结束时间 (yyyy-MM-dd HH:mm)"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="安全措施确认"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="12dp" />
+
+        <ListView
+            android:id="@+id/listMeasures"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="保存草稿"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="提交审批"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnSign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="签字"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnPhoto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="现场拍照"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

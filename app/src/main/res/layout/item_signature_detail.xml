@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginTop="4dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvSignType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/tvSignPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="#555555"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tvSignTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#999999"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tvSignComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="#1565C0"
+        android:layout_marginTop="2dp" />
+
+    <ImageView
+        android:id="@+id/ivSignImage"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitCenter"
+        android:background="#FFFFFF" />
+
+</LinearLayout>
