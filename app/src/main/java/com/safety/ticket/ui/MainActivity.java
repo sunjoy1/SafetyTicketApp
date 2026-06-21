@@ -1,4 +1,4 @@
-﻿package com.safety.ticket.ui;
+package com.safety.ticket.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.safety.ticket.R;
 import com.safety.ticket.data.Ticket;
 import com.safety.ticket.data.TicketDao;
+import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.SafetyMeasure;
 import com.safety.ticket.data.TicketTemplate;
 import com.safety.ticket.utils.DateTimeUtil;

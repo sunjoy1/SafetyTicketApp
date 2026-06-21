@@ -1,4 +1,4 @@
-﻿package com.safety.ticket.ui;
+package com.safety.ticket.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
